@@ -39,58 +39,61 @@ function Experience({ data }: Props) {
 
 export default Experience;
 
-export function ExperienceDropDown({ experienceData }) {
-  const startDate = new Date(experienceData?.start);
+export function ExperienceDropDown({ experienceData }: { experienceData: ExperienceData }) {
+  const startDate = new Date(experienceData?.startDate);
   const formattedStartDate = startDate.toLocaleString("default", {
     month: "long",
     year: "numeric",
   });
-  const endDate = new Date(experienceData?.end);
+  const endDate = new Date(experienceData?.endDate);
   const formattedEndDate = endDate.toLocaleString("default", {
     month: "long",
     year: "numeric",
   });
 
   return (
-      <Accordion type="single" collapsible>
-        <AccordionItem value="item-1">
-          <AccordionTrigger className="px-4">
-            <div className="flex flex-col items-start font-roboto_mono text-slate-200">
-              <h4 className=" dark:text-slate-400 text-base text-left md:text-lg">
-                {experienceData?.designation} @ {experienceData?.company}
-              </h4>
-              <p className="text-slate-400 italic text-xs md:text-sm pt-2 mb-3">{`${formattedStartDate} - ${experienceData.present ? "Present" : formattedEndDate
-                }`}</p>
-            </div>
-          </AccordionTrigger>
-          <AccordionContent>
-            <div className="overflow-hidden">
-              <div className="rounded-xl p-2  bg-lightNavy flex flex-col">
-                <div className="flex items-center dark: text-slate-400 my-2">
-                  <span className="px-2 text-teal-500">
-                    <MdLocationOn />
-                  </span>
-                  <p className=" text-xs">{experienceData.location}</p>
-                </div>
-                <div className="flex px-2 dark:text-slate-400 leading-6 md:leading-7 lg:leading-8 text-sm lg:text-base">
-                  <PortableText value={experienceData?.description} />
-                </div>
-                <div className="flex justify-center py-3 leading-6 md:leading-7 lg:leading-8 text-xs md:text-sm">
-                  <ul className="flex items-center justify-start w-full overflow-auto no-scrollbar">
-                    {experienceData?.skills?.map((skill, j) => (
-                      <li
-                        key={j}
-                        className="px-4 py-1 mx-2 rounded-3xl  bg-primary text-secondary whitespace-nowrap"
-                      >
-                        {skill}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+    <Accordion type="single" collapsible>
+      <AccordionItem value="item-1">
+        <AccordionTrigger className="px-4">
+          <div className="flex flex-col items-start font-roboto_mono text-slate-200">
+            <h4 className=" dark:text-slate-400 text-base text-left md:text-lg">
+              {experienceData?.position} @ {experienceData?.companyName}
+            </h4>
+            <p className="text-slate-400 italic text-xs md:text-sm pt-2 mb-3">{`${formattedStartDate} - ${experienceData.present ? "Present" : formattedEndDate
+              }`}</p>
+          </div>
+        </AccordionTrigger>
+        <AccordionContent>
+          <div className="overflow-hidden">
+            <div className="rounded-xl p-2  bg-lightNavy flex flex-col">
+              <div className="flex items-center dark: text-slate-400 my-2">
+                <span className="px-2 text-teal-500">
+                  <MdLocationOn />
+                </span>
+                <p className=" text-xs">{experienceData.location}</p>
+              </div>
+              <div className="flex px-2 dark:text-slate-400 leading-6 md:leading-7 lg:leading-8 text-sm lg:text-base">
+                {/* <PortableText value={experienceData?.description} /> */}
+                {
+                  experienceData.description
+                }
+              </div>
+              <div className="flex justify-center py-3 leading-6 md:leading-7 lg:leading-8 text-xs md:text-sm">
+                <ul className="flex items-center justify-start w-full overflow-auto no-scrollbar">
+                  {experienceData?.technologies?.map((technology, j) => (
+                    <li
+                      key={j}
+                      className="px-4 py-1 mx-2 rounded-3xl  bg-primary text-secondary whitespace-nowrap"
+                    >
+                      {technology.name}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
+          </div>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
   );
 }

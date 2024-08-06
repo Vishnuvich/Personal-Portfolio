@@ -1,6 +1,4 @@
 'use client'
-
-import Router from 'next/navigation'
 import { Cursor, useTypewriter } from 'react-simple-typewriter'
 import { BiChevronsDown } from 'react-icons/bi'
 import { PortableText } from '@portabletext/react'
@@ -59,13 +57,14 @@ function Hero({ data }: Props) {
           {/* <p className=' text-secondary mb-3 text-sm lg:text-base'>Front-end Developer | Electronics Enthusiast</p> */}
           <BlurFade delay={0.25 * 5} inView>
             <div className=' leading-6 md:leading-7 lg:leading-8 text-slate-400 text-sm lg:text-base'>
-              <PortableText value={data?.content} />
+              {/* <PortableText value={data?.content} /> */}
+              <div>{data?.content}</div>
             </div>
           </BlurFade>
         </div>
         <BlurFade delay={0.25 * 6} inView>
           <div className='flex items-center justify-start '>
-            <Link href={`${data.resume?.asset.url}?dl=`} target='_blank'>
+            <Link href={`${data?.resume}?dl=`} target='_blank'>
               <Button variant='secondary' className='text-slate-400 '>
                 Get My Resume
               </Button>

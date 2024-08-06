@@ -1,6 +1,6 @@
 // import Experience from '../../components/Experience'
 import { Metadata } from 'next'
-import { getDataFromSanity } from '../../sanity/sanity-utils'
+// import { getDataFromSanity } from '../../sanity/sanity-utils'
 import Hero from '../components/Hero'
 // import About from '../../components/About'
 // import Projects from '../../components/Projects'
@@ -16,6 +16,10 @@ import About from '../components/About'
 import Experience from '../components/Experience'
 import Projects from '../components/Projects'
 import Contact from '../components/Contact'
+import getHeroData from '../actions/hero-action'
+import { getAboutData } from '../actions/about.action'
+import { getExperienceData } from '../actions/experience.action'
+import { getProjects } from '../actions/project-action'
 
 type Props = {
   heroData: HeroData,
@@ -29,63 +33,35 @@ export const metadata: Metadata = {
   description: 'Personal portfolio'
 }
 
-async function getData(type, containsImage, fileName?) {
-  const data = await getDataFromSanity(type, containsImage, false, fileName);
-  return data;
-}
+// async function getData(type, containsImage, fileName?) {
+//   const data = await getDataFromSanity(type, containsImage, false, fileName);
+//   return data;
+// }
 
 
 export default async function Home() {
-  const heroData: HeroData = await getData('Hero', true, 'resume');
-  const aboutData: AboutData = await getData('About', false);
-  const experienceData: ExperienceData[] = await getData('Experience', false);
-  const projectData: ProjectData[] = await getData('Projects', false);
-  
+  // const heroData: HeroData = await getData('Hero', true, 'resume');
+  const heroData: HeroData = await getHeroData();
+  const aboutData: AboutData = await getAboutData();
+  const experienceData: ExperienceData[] = await getExperienceData();
+  const projectData: ProjectData[] = await getProjects();
+  console.log(projectData);
 
   return (
     <div className="dark">
-        {/* <Particles className='z-0' id="tsparticles" init={particlesInit} loaded={particlesLoaded}  options= {particleOptions} /> */}
       <div className='lg:mx-auto lg:max-w-6xl relative'>
         {/* Hero Section */}
-        <Hero data={heroData[0]}/>
+        <Hero data={heroData} />
         {/* About Section */}
-        <About data={aboutData[0]} />
+        <About data={aboutData} />
         {/* Experience Section */}
         <Experience data={experienceData} />
         {/* Projects */}
         <Projects data={projectData} />
         {/* Get in touch */}
-        <Contact/>
+        <Contact />
       </div>
     </div>
   )
 }
-
-// export const getStaticProps: GetStaticProps<Props> = async () => {
-//   const heroData: HeroData = await getDataFromSanity('Hero', false);
-//   const aboutData: AboutData = await getDataFromSanity('About', false);
-//   const skillsArr = splitSkillArr(aboutData[0]);
-//   aboutData[0].skillsArr = skillsArr;
-//   const experienceData: ExperienceData[] = await getDataFromSanity('Experience', false);
-//   const projectData: ProjectData[] = await getDataFromSanity('Projects', true);
-//   return {
-//     props: {
-//       heroData: heroData[0],
-//       aboutData: aboutData[0],
-//       experienceData,
-//       projectData,
-//     },
-//     // Revalidate static data each 1 day
-//     revalidate: (60 * 60 * 24),
-//   }
-// }
-
-// export const splitSkillArr = (arr) => {
-//   return arr.skills?.reduce((acc, curr, i) => {
-//     if (!(i%3)) {
-//       acc.push(arr.skills.slice(i, i+3));
-//     }
-//     return acc;
-//   }, []);
-// }
 

@@ -2,11 +2,12 @@ import Header from '../components/Header/Header'
 import Footer from '../components/Footer/Footer'
 import { Roboto_Mono, Roboto } from 'next/font/google'
 import './global.css'
-import { getDataFromSanity } from '../../sanity/sanity-utils';
+// import { getDataFromSanity } from '../../sanity/sanity-utils';
 import { HeroData } from '../utils/types';
 import DotPattern from '../components/magicui/dot-pattern';
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { getHeaderData } from '../actions/hero-action';
 
 
 const robotoMono = Roboto_Mono(
@@ -24,13 +25,13 @@ const roboto = Roboto(
   }
 )
 
-async function getData() {
-  const data: HeroData = await getDataFromSanity('Hero', false);
-  return data[0];
-}
+// async function getData() {
+//   const data: HeroData = await getDataFromSanity('Hero', false);
+//   return data[0];
+// }
 
 export default async function RootLayout(props: { children: React.ReactNode, modal: React.ReactNode }) {
-  const headerData = await getData();
+  const headerData = await getHeaderData();
   return (
     <html lang="en">
       <body className={`${robotoMono.variable} ${roboto.variable} font-sans`}>

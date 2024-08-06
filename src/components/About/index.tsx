@@ -10,8 +10,6 @@ type Props = {
 }
 
 function About({ data }: Props) {
-
-
   return (
     <section className='flex flex-col py-10 px-5'>
       <div className='flex flex-col justify-start leading-6 md:leading-7 lg:leading-8 text-sm lg:text-base'>
@@ -20,7 +18,8 @@ function About({ data }: Props) {
         </BlurFade>
         <BlurFade delay={0.25 * 2} inView>
           <div className='dark:text-slate-400 '>
-            <PortableText value={data?.aboutContent} />
+            {/* <PortableText value={data?.aboutContent} /> */}
+            {data.aboutContent}
           </div>
         </BlurFade>
         <BlurFade delay={0.25 * 3} inView>
@@ -35,7 +34,7 @@ function About({ data }: Props) {
                 data.skills.map((skill, i) => (
                   <li className='list-circle text-secondary py-2' key={i}>
                     <span className='text-slate-400'>
-                      {skill}
+                      {skill.name}
                     </span>
                   </li>
                 ))

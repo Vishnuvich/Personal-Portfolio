@@ -1,57 +1,62 @@
-interface SanityBase  {
+interface SanityBase {
     _createdAt: string,
     _id: any,
     _rv: string,
     _updatedAt: string,
 }
 
-export interface HeroData extends SanityBase {
-    _type: 'Hero',
+export interface HeroData {
+    id: string
+    title: string,
     designation: string,
     organization: string,
     companyUrl: string,
-    resume: {
-        asset: any,
-        _type: 'file'
-    },
-    content: any,
-    headerDescription: any,
-    avatarImage: any
-
+    resume: string
+    content: string,
+    headerDescription: string,
+    avatarImage: string,
+    createdAt: Date,
+    updatedAt: Date,
 }
 
-export interface AboutData extends SanityBase {
-    _type: 'About',
-    aboutContent: any,
-    skills: [],
+export interface HeaderData {
+    avatarImage: string,
+    headerDescription: string,
 }
 
-export interface ExperienceData extends SanityBase {
-    _type: 'Experience',
-    designation: string,
-    company: string,
-    location: string,
-    start: string,
-    end: string,
-    present: boolean,
-    skills: [],
-    description: any
+export interface AboutData {
+    id: string,
+    createdAt: Date,
+    updatedAt: Date,
+    aboutContent: string,
+    skills: { name: string }[],
 }
 
-export interface ProjectData extends SanityBase {
-    _type: 'Projects',
-    category: string,
-    name: string,
-    slug: {
-        _type: 'slug',
-        current: string
-    },
-    image: {
-        asset: {
-            _id: string,
-            url: string,
-        }
-    },
-    description: any,
-    technologies: []
+export interface ExperienceData {
+    id: string
+    companyName: string
+    companyUrl: string
+    location: string
+    position: string
+    startDate: Date
+    endDate: Date
+    present: boolean
+    description: string
+    technologies: { name: string }[]
+    createdAt: Date
+    updatedAt: Date
+}
+
+export interface ProjectData {
+    id: string
+    title: string
+    slug: string
+    category: string
+    image: string
+    description: string
+    technologies: { name: string }[]
+    githubUrl: string
+    liveUrl: string
+    createdAt: Date
+    updatedAt: Date
 }
