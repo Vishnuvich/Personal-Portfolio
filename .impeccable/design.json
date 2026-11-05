@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-05T00:00:00Z",
+  "title": "Design System: Vishnu Surendran Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "tangerine": { "role": "primary", "displayName": "Tangerine", "canonical": "#F24E0A", "tonalRamp": ["#2B0D02", "#5E1D05", "#9A3007", "#D14509", "#F24E0A", "#F7804D", "#FBB391", "#FFEADF"] },
+      "tangerine-ink": { "role": "primary", "displayName": "Burnt Tangerine Ink", "canonical": "#A5320A", "tonalRamp": ["#240B03", "#4A1706", "#701F07", "#A5320A", "#C9541F", "#E08A60", "#F0BFA5", "#FBE6DA"] },
+      "ground": { "role": "neutral", "displayName": "Paper", "canonical": "#FCFCFB", "tonalRamp": ["#0F1115", "#2A2D33", "#4A4F59", "#7B7F87", "#B9B6AE", "#E3E1DC", "#F3F2EF", "#FCFCFB"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#0F1115", "tonalRamp": ["#0F1115", "#171A20", "#2B3038", "#4A4F59", "#7B7F87", "#B7BBC4", "#E3E1DC", "#F5F4F1"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero h1 only, one tangerine emphasis word." },
+      "headline": { "displayName": "Headline", "purpose": "Section h2." },
+      "title": { "displayName": "Title", "purpose": "h3 for rows, chapters and features." },
+      "body": { "displayName": "Body", "purpose": "Paragraphs at 18px, 64ch measure." },
+      "label": { "displayName": "Label", "purpose": "Buttons, chips, dates, form labels." }
+    },
+    "shadows": [
+      { "name": "floating-card", "value": "0 14px 30px -12px rgba(15,17,21,.22), 0 2px 6px rgba(15,17,21,.06)", "purpose": "The 'right now' card overlapping the portrait." },
+      { "name": "screenshot-lift", "value": "0 24px 50px -24px rgba(15,17,21,.28)", "purpose": "Framed work screenshots." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(.16,1,.3,1)", "purpose": "The only easing: reveals, hovers, sweeps." },
+      { "name": "rise", "value": ".9s, 22px translateY, 90-100ms stagger", "purpose": "Hero and scroll-reveal entrance." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "560px" },
+      { "name": "timeline-stack", "value": "760px" },
+      { "name": "collapse", "value": "960px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ink CTA with trailing arrow; the one primary action per view.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Follow the journey <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M5 12h14M13 6l6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:10px;font:600 17px/1 var(--body,'Hanken Grotesk',system-ui,sans-serif);padding:18px 26px;border-radius:12px;background:#0F1115;color:#fff;text-decoration:none;transition:background .25s cubic-bezier(.16,1,.3,1)}.ds-btn svg{transition:transform .3s cubic-bezier(.16,1,.3,1)}.ds-btn:hover{background:#2A2F3A}.ds-btn:hover svg{transform:translateX(4px)}.ds-btn:focus-visible{outline:3px solid #F24E0A;outline-offset:3px}"
+    },
+    {
+      "name": "Button on Dark",
+      "kind": "button",
+      "refersTo": "button-on-dark",
+      "description": "Tangerine fill with ink label inside the dark contact band.",
+      "html": "<a class=\"ds-btn-dark\" href=\"#\">Send the brief</a>",
+      "css": ".ds-btn-dark{display:inline-flex;align-items:center;font:600 17px/1 'Hanken Grotesk',system-ui,sans-serif;padding:18px 26px;border-radius:12px;background:#F24E0A;color:#0F1115;text-decoration:none;transition:background .25s}.ds-btn-dark:hover{background:#FF6A2A}.ds-btn-dark:focus-visible{outline:3px solid #F24E0A;outline-offset:3px}"
+    },
+    {
+      "name": "Text Link",
+      "kind": "custom",
+      "description": "Burnt tangerine link whose underline appears on hover.",
+      "html": "<a class=\"ds-link\" href=\"#\">See what the agency does</a>",
+      "css": ".ds-link{font:600 17px 'Hanken Grotesk',system-ui,sans-serif;color:#A5320A;text-decoration:none;border-bottom:2px solid transparent;transition:border-color .2s}.ds-link:hover{border-color:currentColor}.ds-link:focus-visible{outline:3px solid #F24E0A;outline-offset:3px;border-radius:6px}"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "description": "Sticky 72px header with dot wordmark, quiet links, one ink CTA.",
+      "html": "<header class=\"ds-nav\"><span class=\"ds-brand\"><i></i>Vishnu</span><ul><li><a href=\"#\">Journey</a></li><li><a href=\"#\">Work</a></li><li><a href=\"#\">Contact</a></li></ul></header>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;height:72px;padding:0 24px;background:#FCFCFB;border-bottom:1px solid #E3E1DC;font-family:'Hanken Grotesk',system-ui,sans-serif}.ds-brand{display:flex;align-items:center;gap:10px;font:650 19px 'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:-.02em;color:#0F1115}.ds-brand i{width:12px;height:12px;border-radius:50%;background:#F24E0A;display:block}.ds-nav ul{display:flex;gap:36px;list-style:none;margin:0;padding:0;font-weight:550;font-size:16px}.ds-nav a{color:#4A4F59;text-decoration:none;padding:6px 0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}.ds-nav a:hover{color:#0F1115;border-color:#F24E0A}.ds-nav a:focus-visible{outline:3px solid #F24E0A;outline-offset:3px;border-radius:6px}"
+    },
+    {
+      "name": "Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Tech and skill label.",
+      "html": "<span class=\"ds-chip\">TypeScript</span>",
+      "css": ".ds-chip{display:inline-block;font:550 14.5px 'Hanken Grotesk',system-ui,sans-serif;background:#fff;border:1px solid #E3E1DC;border-radius:8px;padding:6px 12px;color:#4A4F59}"
+    },
+    {
+      "name": "Tag Pill",
+      "kind": "chip",
+      "refersTo": "tag-pill",
+      "description": "Status tag for work items (client brand, retail, in the works).",
+      "html": "<span class=\"ds-tag\">Client brand</span>",
+      "css": ".ds-tag{display:inline-block;font:650 13.5px 'Hanken Grotesk',system-ui,sans-serif;color:#A5320A;background:#FFEADF;padding:7px 14px;border-radius:999px}"
+    },
+    {
+      "name": "Ruled Row",
+      "kind": "card",
+      "description": "Service row: title, copy, arrow disc; tints and insets on hover.",
+      "html": "<div class=\"ds-rows\"><div class=\"ds-row\"><h3>Web and Shopify builds</h3><p>Sites and stores that load fast and convert.</p><span class=\"ds-arrow\">&rarr;</span></div></div>",
+      "css": ".ds-rows{border-top:1px solid #0F1115;font-family:'Hanken Grotesk',system-ui,sans-serif}.ds-row{display:grid;grid-template-columns:1fr auto;gap:8px 24px;padding:34px 0;border-bottom:1px solid #E3E1DC;transition:background .3s cubic-bezier(.16,1,.3,1),padding .3s cubic-bezier(.16,1,.3,1)}.ds-row:hover{background:#F3F2EF;padding-left:20px;padding-right:20px}.ds-row h3{grid-column:1;margin:0;font:650 26px/1.15 'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:-.02em;color:#0F1115}.ds-row p{grid-column:1;margin:4px 0 0;color:#4A4F59;font-size:18px}.ds-arrow{grid-row:1/3;grid-column:2;align-self:center;width:44px;height:44px;border-radius:50%;border:1px solid #E3E1DC;display:grid;place-items:center;transition:background .25s,color .25s}.ds-row:hover .ds-arrow{background:#0F1115;border-color:#0F1115;color:#fff}"
+    },
+    {
+      "name": "Timeline Chapter",
+      "kind": "custom",
+      "description": "Journey chapter on a hairline spine with a tangerine ring node.",
+      "html": "<div class=\"ds-line\"><div class=\"ds-chap\"><span class=\"ds-when\">2026</span><div><h3>Eminent Business Studio</h3><p>Co-founder of a digital agency for ecommerce and retail brands.</p></div></div></div>",
+      "css": ".ds-line{position:relative;padding-left:48px;font-family:'Hanken Grotesk',system-ui,sans-serif}.ds-line::before{content:'';position:absolute;left:11px;top:10px;bottom:10px;width:2px;background:#E3E1DC}.ds-chap{position:relative;display:grid;grid-template-columns:190px 1fr;gap:10px 40px;padding-bottom:24px}.ds-chap::before{content:'';position:absolute;left:-48px;top:9px;width:24px;height:24px;border-radius:50%;background:#FCFCFB;border:2px solid #F24E0A}.ds-when{font:600 15px 'Hanken Grotesk',system-ui,sans-serif;color:#4A4F59;padding-top:9px}.ds-chap h3{margin:0;font:650 32px/1.1 'Bricolage Grotesque',system-ui,sans-serif;letter-spacing:-.02em;color:#0F1115}.ds-chap p{margin:12px 0 0;color:#4A4F59;font-size:18px;max-width:64ch}"
+    },
+    {
+      "name": "Dark Form Field",
+      "kind": "input",
+      "refersTo": "input-dark",
+      "description": "Input inside the ink contact band; tangerine focus ring.",
+      "html": "<label class=\"ds-field\">Email<input type=\"email\" placeholder=\"you@company.com\"></label>",
+      "css": ".ds-field{display:grid;gap:8px;font:600 15px 'Hanken Grotesk',system-ui,sans-serif;color:#F5F4F1;background:#171A20;border:1px solid #2B3038;border-radius:20px;padding:24px}.ds-field input{font:400 17px 'Hanken Grotesk',system-ui,sans-serif;color:#F5F4F1;background:#0B0D11;border:1px solid #2B3038;border-radius:10px;padding:14px 16px;width:100%;transition:border-color .2s}.ds-field input::placeholder{color:#8D929C}.ds-field input:hover{border-color:#454B57}.ds-field input:focus-visible{outline:3px solid #F24E0A;outline-offset:1px;border-color:#F24E0A}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Founder's Ledger",
+    "overview": "A calm, commercial, light-ground site played straight at full craft: near-white paper, ink type, hairline rules that read like ledger lines, and a single tangerine accent that is used large or as a thin underline, never as wallpaper. A dark ink band closes the page at the contact section. The page is a journey told in order, so the structure is rows, rules and a vertical timeline rather than cards.\n\nDensity is generous: sections breathe with 72-128px vertical padding, copy holds to a 64ch measure, and hierarchy comes from the Bricolage display face against a quiet Hanken body, not from boxes or shadows. Motion is soft and purposeful: content rises into place once, an underline sweeps under one word in the headline, and a dot field reacts to the cursor.\n\nThe system rejects the dark, monospace, typewriter developer-resume look.",
+    "keyCharacteristics": [
+      "Near-white ground, ink type, one tangerine accent, warm-grey bands for alternation.",
+      "Hairline 1px rules and 1px ink rules at the top of lists carry structure.",
+      "Two grotesque faces: Bricolage Grotesque for display, Hanken Grotesk for everything else.",
+      "Flat at rest; shadow only on the floating \"now\" card and the work screenshot.",
+      "Dark ink contact band and footer as the single inverted zone."
+    ],
+    "rules": [
+      { "name": "The One Voice Rule", "body": "Tangerine is the only chromatic accent. It appears large (a word, a node, a bar) or as a thin line; it never fills big surfaces and never carries small text on the light ground (use Burnt Tangerine Ink).", "section": "colors" },
+      { "name": "The Ink Band Rule", "body": "The only dark region is the contact section and footer. Everything above it stays light.", "section": "colors" },
+      { "name": "The Tight Display Rule", "body": "Display faces carry negative tracking (-0.02 to -0.035em) and balanced wrapping; body text never does.", "section": "typography" },
+      { "name": "The Sentence Case Rule", "body": "Labels, buttons, and tags are sentence case. No uppercase tracked labels.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces are flat. Shadows are soft, large-blur, and reserved for the two overlapping or framed media objects above.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep tangerine (#F24E0A) large or thin; switch to #A5320A for any accent text on the light ground.",
+      "Do build lists as ruled rows with a 1px ink top rule and hairline separators.",
+      "Do use Bricolage for headings, labels in display contexts, and the wordmark; Hanken for all running text and UI labels.",
+      "Do use the single spring-out ease and honor `prefers-reduced-motion`.",
+      "Do keep the 64ch measure on paragraphs and 3px tangerine focus rings on every interactive element.",
+      "Do keep the contact section and footer as the only dark zone."
+    ],
+    "donts": [
+      "Don't drift to dark, monospace, or terminal styling on the light sections.",
+      "Don't fill large surfaces with tangerine or add a second accent hue.",
+      "Don't add shadows to ordinary rows or cards; hairlines do that job.",
+      "Don't use uppercase tracked labels or other small-caps-style headings above sections.",
+      "Don't round beyond the scale above or mix border widths beyond 1px (2px only for spine, underlines, nodes)."
+    ]
+  }
+}
