@@ -1,18 +1,24 @@
 import React from 'react'
-import { getMediumPosts } from '../../actions/blog-action';
-import BlogList from './BlogList';
+import { getMediumPosts } from '../../actions/blog-action'
+import BlogList from './BlogList'
 
 const Blog = async () => {
-  const posts = await getMediumPosts();
+  let posts: any = null
+  try {
+    posts = await getMediumPosts()
+  } catch {
+    posts = null
+  }
   return (
-    <>
-      <div className='w-screen min-h-screen z-10 text-teal-500 px-10 lg:px-20 xl:px-30 2xl:px-96 py-20 relative'>
-        <h2 className='text-2xl text-slate-200 font-semibold mb-5'>Checkout my latest blogs</h2>
-        <div className='py-5'>
-          <BlogList posts={posts.items} />
-        </div>
+    <div className="blog-wrap">
+      <div className="wrap">
+        <h1 style={{ fontSize: 'clamp(40px, 5.4vw, 72px)', lineHeight: 1, fontWeight: 750 }}>Notes from the journey</h1>
+        <p style={{ marginTop: 20, fontSize: 19 }}>
+          What I figure out while building software and businesses, published on Medium.
+        </p>
+        <BlogList posts={posts?.items} />
       </div>
-    </>
+    </div>
   )
 }
 
